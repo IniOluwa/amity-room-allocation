@@ -3,7 +3,9 @@ from allocation_people_collection import PeopleCollection
 
 
 class PeopleFile(object):
+
     """Class for getting and sorting people according to role"""
+
     def read_file(self):
         people = open('people.txt')
         people_collection = PeopleCollection()
@@ -17,8 +19,8 @@ class PeopleFile(object):
             role = line[2]
 
             if role == 'STAFF':
-                """Instatiation of a single staff"""
-                staff = Staff(firstname, lastname)
+                """Instantiation of a single staff"""
+                staff = Staff(firstname, lastname, role)
                 people_collection.append(staff)
 
             elif role == 'FELLOW':
@@ -27,4 +29,5 @@ class PeopleFile(object):
                 """Instantiation of a single fellow"""
                 fellow = Fellow(firstname, lastname, role, gender, need)
                 people_collection.append(fellow)
+
         return people_collection
