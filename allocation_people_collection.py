@@ -34,15 +34,3 @@ class PeopleCollection(list):
                     if i.need == 'Y':
                         female_residential_fellows.append(i)
         return female_residential_fellows
-
-    def return_fellows(self):
-        for i in self.get_fellows():
-            print (i.firstname + ' ' + i.lastname)
-
-    def return_staff(self):
-        for i in self.get_staff():
-            print (i.firstname + ' ' + i.lastname)
-
-    def return_male_residential_fellows(self):
-        for i in self.get_male_residential_fellows():
-            print (i.firstname + ' ' + i.lastname)

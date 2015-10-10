@@ -33,5 +33,3 @@ class Print:
             print "FEMALE ROOM"
             print females.place_female_fellows_in_rooms()[index]
             print females.place_female_fellows_in_rooms()[index].list_persons()
-
-Print().allocate_staff_to_offices()
