@@ -3,7 +3,6 @@ from allocation_people_collection import PeopleCollection
 
 
 class PeopleFile(object):
-
     """Class for getting and sorting people according to role"""
 
     def read_file(self):
