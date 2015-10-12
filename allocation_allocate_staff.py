@@ -12,7 +12,7 @@ class StaffOffices:
 
     def place_staff_in_offices(self):
         """method for placing staff"""
-        return Office.place_fellows_in_offices(self.offices_available, 'staff')
+        return Office.place_people_in_offices(self.offices_available, 'staff')
 
     def number_of_offices(self):
         return len(self.offices_available)

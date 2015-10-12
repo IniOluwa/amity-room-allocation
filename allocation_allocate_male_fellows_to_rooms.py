@@ -13,7 +13,7 @@ class MaleRooms:
         self.rooms_available = [olive, tongs, mahogany, sapele, maple, konoha]
 
     def place_male_fellows_in_rooms(self):
-        return Room.place_male_fellows_in_rooms
+        return Room.place_fellows_in_rooms(self.rooms_available, 'male_fellows')
 
     def number_of_rooms(self):
         return len(self.rooms_available)

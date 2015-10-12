@@ -9,19 +9,23 @@ while True:
     print "Pick 5 to see all allocations"
     print "Pick 6 to close program"
 
-    num = input('what is your pick?:')
-    if num == 1:
+    num = raw_input('what is your pick?:')
+    if len(str(num)) < 1:
+        print "Please pick a valid number"
+    elif int(num) == 1:
         print call.allocate_staff_to_offices()
-    elif num == 2:
+    elif int(num) == 2:
         print call.allocate_fellows_to_offices()
-    elif num == 3:
+    elif int(num) == 3:
         print call.allocate_male_fellows_to_rooms()
-    elif num == 4:
+    elif int(num) == 4:
         print call.allocate_female_fellows_to_rooms()
-    elif num == 5:
+    elif int(num) == 5:
         print call.allocate_staff_to_offices()
         print call.allocate_fellows_to_offices()
         print call.allocate_male_fellows_to_rooms()
         print call.allocate_female_fellows_to_rooms()
-    elif num == 6:
+    elif int(num) == 6:
         break
+    else:
+        print "Please pick a valid number"

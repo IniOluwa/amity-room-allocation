@@ -16,7 +16,7 @@ class FellowsOffices:
 
     def place_fellows_in_offices(self):
         """method for placing fellows in offices"""
-        return Office.place_fellows_in_offices(self.offices_available, 'fellows')
+        return Office.place_people_in_offices(self.offices_available, 'fellows')
 
     def number_of_offices(self):
         return len(self.offices_available)
