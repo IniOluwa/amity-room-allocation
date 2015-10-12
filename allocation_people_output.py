@@ -7,7 +7,7 @@ while True:
     print "Pick 3 to see male fellows room allocation"
     print "Pick 4 to see female fellows room allocation"
     print "Pick 5 to see all allocations"
-    print "Pick 6 to cancel program"
+    print "Pick 6 to close program"
 
     num = input('what is your pick?:')
     if num == 1:
