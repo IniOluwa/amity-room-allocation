@@ -1,3 +1,15 @@
-# Byte-compiled / optimized / DLL files
+# python compliled files
 __pycache__/
 *.py[cod]
+
+# js files
+*.js
+
+# html files
+*.html
+
+# json files
+*.json
+
+# css files
+*.css
