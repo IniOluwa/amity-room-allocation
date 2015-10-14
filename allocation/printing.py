@@ -1,28 +1,36 @@
 from allocation import StaffOffices, FellowsOffices, MaleRooms, FemaleRooms
 
-
 class Print:
 
-    def allocate_staff_to_offices(self):
+    def allocate(self):
+        digit = int(raw_input('Pick an option: '))
         staff = StaffOffices()
-        for index in range(staff.number_of_offices()):
-            print staff.place_staff_in_offices()[index], "STAFF OFFICE"
-            print staff.place_staff_in_offices()[index].list_persons()
-
-    def allocate_fellows_to_offices(self):
+        staff_offices = staff.number_of_offices()
         fellows = FellowsOffices()
-        for index in range(fellows.number_of_offices()):
-            print fellows.place_fellows_in_offices()[index], "FELLOWS OFFICE"
-            print fellows.place_fellows_in_offices()[index].list_persons()
-
-    def allocate_male_fellows_to_rooms(self):
-        males = MaleRooms()
-        for index in range(males.number_of_rooms()):
-            print males.place_male_fellows_in_rooms()[index], "MALE ROOM"
-            print males.place_male_fellows_in_rooms()[index].list_persons()
-
-    def allocate_female_fellows_to_rooms(self):
-        females = FemaleRooms()
-        for index in range(females.number_of_rooms()):
-            print females.place_female_fellows_in_rooms()[index], "FEMALE ROOM"
-            print females.place_female_fellows_in_rooms()[index].list_persons()
+        fellows_offices = fellows.number_of_offices()
+        male = MaleRooms()
+        male_rooms = male.number_of_rooms()
+        female = FemaleRooms()
+        female_rooms = female.number_of_rooms()
+        number = [staff_offices, fellows_offices, male_rooms, female_rooms]
+        for num in number:
+            if num == staff_offices:
+                if digit == 1:
+                    for index in range(staff_offices):
+                        print staff.place_staff_in_offices()[index], "STAFF OFFICE"
+                        print staff.place_staff_in_offices()[index].list_persons()
+            elif num == fellows_offices:
+                if digit == 2:
+                    for index in range(fellows_offices):
+                        print fellows.place_fellows_in_offices()[index], "FELLOWS OFFICE"
+                        print fellows.place_fellows_in_offices()[index].list_persons()
+            elif num == male_rooms:
+                if digit == 3:
+                    for index in range(male_rooms):
+                        print male.place_male_fellows_in_rooms()[index], "MALE ROOM"
+                        print male.place_male_fellows_in_rooms()[index].list_persons()
+            elif num == female_rooms:
+                if digit == 4:
+                    for index in range(female_rooms):
+                        print female.place_female_fellows_in_rooms()[index], "FEMALE ROOM"
+                        print female.place_female_fellows_in_rooms()[index].list_persons()
