@@ -13,6 +13,7 @@ class Print:
         female = FemaleRooms()
         female_rooms = female.number_of_rooms()
         number = [staff_offices, fellows_offices, male_rooms, female_rooms]
+
         for num in number:
             if num == staff_offices:
                 if digit == 1:
@@ -34,3 +35,5 @@ class Print:
                     for index in range(female_rooms):
                         print female.place_female_fellows_in_rooms()[index], "FEMALE ROOM"
                         print female.place_female_fellows_in_rooms()[index].list_persons()
+                if digit == 6:
+                    break

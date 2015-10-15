@@ -1,4 +1,4 @@
-from amity import Office, Room, Amity
+from amity import Room, Office, Amity
 
 
 class StaffOffices:
@@ -11,7 +11,7 @@ class StaffOffices:
 
     def place_staff_in_offices(self):
         """method for placing staff"""
-        return Amity.place_people_in_spaces(self.spaces_available, 'staff')
+        return Amity.space(self.spaces_available, 'staff')
 
     def number_of_offices(self):
         return len(self.spaces_available)
@@ -31,7 +31,7 @@ class FellowsOffices:
 
     def place_fellows_in_offices(self):
         """method for placing fellows in offices"""
-        return Amity.place_people_in_spaces(self.spaces_available, 'fellows')
+        return Amity.space(self.spaces_available, 'fellows')
 
     def number_of_offices(self):
         return len(self.spaces_available)
@@ -48,7 +48,7 @@ class MaleRooms:
         self.spaces_available = [olive, tongs, mahogany, sapele, maple, konoha]
 
     def place_male_fellows_in_rooms(self):
-        return Amity.place_people_in_spaces(self.spaces_available, 'male_fellows')
+        return Amity.sp(self.spaces_available, 'male_fellows')
 
     def number_of_rooms(self):
         return len(self.spaces_available)
@@ -63,7 +63,7 @@ class FemaleRooms:
         self.spaces_available = [iroko, obeche, juniper, aishte]
 
     def place_female_fellows_in_rooms(self):
-        return Amity.place_people_in_spaces(self.spaces_available, 'female_fellows')
+        return Amity.sp(self.spaces_available, 'female_fellows')
 
     def number_of_rooms(self):
         return len(self.spaces_available)
