@@ -1,3 +1,8 @@
+"""
+A PeopleFile class that gets the people,
+creates instances of staff and fellows,
+then appends them to a list.
+"""
 from person import Staff, Fellow
 from collection import PeopleCollection
 
@@ -12,7 +17,8 @@ class PeopleFile(object):
         for line in iter(people):
             """breaking line into list"""
             line = line.split()
-            """Assigning objects in list positions values to their respective values"""
+            """Assigning objects in list positions
+            values to their respective values"""
             firstname = line[0]
             lastname = line[1]
             role = line[2]

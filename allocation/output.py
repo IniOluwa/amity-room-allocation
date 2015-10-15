@@ -1,3 +1,6 @@
+"""
+While loop that calls the people classes.
+"""
 from printing import Print
 
 call = Print()

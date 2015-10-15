@@ -1,3 +1,7 @@
+"""
+Instances of Offices and rooms are created here and populated
+with people in the Amity class which exists in the amity file.
+"""
 from amity import Office, Room
 
 

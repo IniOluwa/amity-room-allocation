@@ -1,8 +1,14 @@
+"""
+A PeopleCollection class that has the attributes of a list,
+this class sorts all the instances that has been created in PeopleFIle,
+and separates staff from fellows.
+"""
 from person import Staff, Fellow
 
 
 class PeopleCollection(list):
-    """People collection class for collecting instantiated people and sorting them into fellows and staff according to instantiation"""
+    """People collection class for collecting instantiated people
+    and sorting them into fellows and staff according to instantiation"""
     def get_staff(self):
         staff = []
         for i in self:

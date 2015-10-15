@@ -1,3 +1,11 @@
+"""
+The Space class which 
+has the functionality of putting people in rooms.
+The Office and Room classes
+which inherits from Space.
+Instances of offices and rooms
+are called and populated with people. 
+"""
 from inputting import PeopleFile
 
 

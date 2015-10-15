@@ -1,3 +1,7 @@
+"""
+A class and method that prints out
+people in rooms and offices in the right format.
+"""
 from allocation import StaffOffices, FellowsOffices, MaleRooms, FemaleRooms
 
 

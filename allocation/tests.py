@@ -1,3 +1,6 @@
+"""
+Unittests for Amity allocation
+"""
 import unittest
 from person import Person, Staff, Fellow
 from inputting import PeopleFile
