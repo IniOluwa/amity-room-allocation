@@ -5,7 +5,7 @@ people in rooms and offices in the right format.
 from allocation import StaffOffices, FellowsOffices, MaleRooms, FemaleRooms
 
 
-class Print:
+class PrintPeople:
 
     def allocate_staff_to_offices(self):
         staff = StaffOffices()

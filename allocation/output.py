@@ -1,9 +1,9 @@
 """
 While loop that calls the people classes.
 """
-from printing import Print
+from printing import PrintPeople
 
-call = Print()
+call = PrintPeople()
 while True:
     print "Pick 1 to see staff allocation"
     print "Pick 2 to see fellows office allocation"
