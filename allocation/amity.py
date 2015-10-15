@@ -26,41 +26,39 @@ class Office(Space):
         Space.__init__(self, name)
         self.limit = 6
 
+    @staticmethod
+    def place_people_in_offices(offices_available, type):
+        """method for placing people in offices"""
+        file_read = PeopleFile().read_file()
+        people_list = file_read.get_fellows() if type=='fellows' else file_read.get_staff()
+        office_walker = 0
+        for office in offices_available:
+            for num in range(len(people_list)):
+                try:
+                    office.add_person(people_list[office_walker])
+                except:
+                    continue
+                office_walker += 1
+        return offices_available
+
+
 
 class Room(Space):
     def __init__(self, name):
         Space.__init__(self, name)
         self.limit = 4
 
-
-class Amity(Room, Office):
-    def __init__(self, name):
-        Space.__init__(self, name)
-
     @staticmethod
-    def place_people_in_spaces(spaces_available, type):
+    def place_fellows_in_rooms(rooms_available, type):
+        """method for placing people in rooms"""
         file_read = PeopleFile().read_file()
-        offices_allocation = file_read.get_fellows(
-            ) if type == 'fellows' else file_read.get_staff()
-        rooms_allocation = file_read.get_male_residential_fellows(
-            ) if type == 'male_fellows' else file_read.get_female_residential_fellows()
-        walker = 0
-        if offices_allocation:
-            for space in spaces_available:
-                for num in range(len(offices_allocation)):
-                    try:
-                        space.add_person(offices_allocation[walker])
-                    except:
-                        continue
-                    walker += 1
-            return spaces_available
-
-        elif rooms_allocation:
-            for space in spaces_available:
-                for num in range(len(rooms_allocation)):
-                    try:
-                        space.add_person(rooms_allocation[walker])
-                    except:
-                        continue
-                    walker += 1
-            return spaces_available
+        people_list = file_read.get_male_residential_fellows() if type=='male_fellows' else file_read.get_female_residential_fellows()
+        room_walker = 0
+        for room in rooms_available:
+            for num in range(len(people_list)):
+                try:
+                    room.add_person(people_list[room_walker])
+                except:
+                    continue
+                room_walker += 1
+        return rooms_available

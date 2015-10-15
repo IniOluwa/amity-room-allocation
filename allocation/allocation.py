@@ -1,4 +1,4 @@
-from amity import Office, Room, Amity
+from amity import Office, Room
 
 
 class StaffOffices:
@@ -7,14 +7,14 @@ class StaffOffices:
         furnace = Office('furnace')
         gild = Office('Gild')
         hacksaw = Office('Hacksaw')
-        self.spaces_available = [furnace, gild, hacksaw]
+        self.offices_available = [furnace, gild, hacksaw]
 
     def place_staff_in_offices(self):
         """method for placing staff"""
-        return Amity.place_people_in_spaces(self.spaces_available, 'staff')
+        return Office.place_people_in_offices(self.offices_available, 'staff')
 
     def number_of_offices(self):
-        return len(self.spaces_available)
+        return len(self.offices_available)
 
 
 class FellowsOffices:
@@ -27,14 +27,14 @@ class FellowsOffices:
         crucible = Office('Crucible')
         foundry = Office('Foundry')
         sledgehammer = Office('sledgehammer')
-        self.spaces_available = [cedar, carat, kiln, anvil, crucible, foundry, sledgehammer]
+        self.offices_available = [cedar, carat, kiln, anvil, crucible, foundry, sledgehammer]
 
     def place_fellows_in_offices(self):
         """method for placing fellows in offices"""
-        return Amity.place_people_in_spaces(self.spaces_available, 'fellows')
+        return Office.place_people_in_offices(self.offices_available, 'fellows')
 
     def number_of_offices(self):
-        return len(self.spaces_available)
+        return len(self.offices_available)
 
 
 class MaleRooms:
@@ -45,13 +45,13 @@ class MaleRooms:
         sapele = Room('Sapele')
         maple = Room('Maple')
         konoha = Room('Konoha')
-        self.spaces_available = [olive, tongs, mahogany, sapele, maple, konoha]
+        self.rooms_available = [olive, tongs, mahogany, sapele, maple, konoha]
 
     def place_male_fellows_in_rooms(self):
-        return Amity.place_people_in_spaces(self.spaces_available, 'male_fellows')
+        return Room.place_fellows_in_rooms(self.rooms_available, 'male_fellows')
 
     def number_of_rooms(self):
-        return len(self.spaces_available)
+        return len(self.rooms_available)
 
 
 class FemaleRooms:
@@ -60,10 +60,10 @@ class FemaleRooms:
         obeche = Room('obeche')
         juniper = Room('Juniper')
         aishte = Room('Aishte')
-        self.spaces_available = [iroko, obeche, juniper, aishte]
+        self.rooms_available = [iroko, obeche, juniper, aishte]
 
     def place_female_fellows_in_rooms(self):
-        return Amity.place_people_in_spaces(self.spaces_available, 'female_fellows')
+        return Room.place_fellows_in_rooms(self.rooms_available, 'female_fellows')
 
     def number_of_rooms(self):
-        return len(self.spaces_available)
+        return len(self.rooms_available)
