@@ -40,3 +40,11 @@ class PeopleCollection(list):
                     if i.need == 'Y':
                         female_residential_fellows.append(i)
         return female_residential_fellows
+
+    def get_unallocated_fellows(self):
+        unallocated_fellows = []
+        for i in self:
+            if isinstance(i, Fellow):
+                if i.need == 'N':
+                    unallocated_fellows.append(i)
+        return unallocated_fellows
