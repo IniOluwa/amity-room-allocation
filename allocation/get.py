@@ -2,16 +2,20 @@ from manager import Manager
 
 manager = Manager()
 manager.space_placing()
-print manager.list_spaces()
+# print manager.list_spaces()
 
-print manager.staff_allocation()
+manager.staff_allocation()
+print manager.get_staff_placement()[0], "- STAFF OFFICE"
 print manager.get_staff_placement()[0].list_people()
 
-print manager.fellow_allocation()
+manager.fellow_allocation()
+print manager.get_fellow_placement()[0], "- FELLOW OFFICE"
 print manager.get_fellow_placement()[0].list_people()
 
-print manager.male_allocation()
+manager.male_allocation()
+print manager.get_male_placement()[0], "- MALE ROOM"
 print manager.get_male_placement()[0].list_people()
 
-print manager.female_allocation()
+manager.female_allocation()
+print manager.get_female_placement()[0], "- FEMALE ROOM"
 print manager.get_female_placement()[0].list_people()

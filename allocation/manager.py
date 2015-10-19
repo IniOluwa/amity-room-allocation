@@ -1,4 +1,4 @@
-from spaces import OfficeSpace, LivingSpace
+from spaces import Space, OfficeSpace, LivingSpace
 from inputting import PeopleFile
 
 
@@ -32,14 +32,12 @@ class Manager(object):
         walker = 0
         for space in self.spaces_available:
             if space.occupant_type == 'STAFF':
-                for staff in staffs:
+                for staff in range(len(staffs)):
                     try:
-                        space.add_person(staff[walker])
-                        walker = walker + 1
+                        space.add_person(staffs[walker])
                     except:
                         continue
-                    finally:
-                            return "All staff have been allocated."
+                    walker = walker + 1
 
     def get_staff_placement(self):
         return [space for space in self.spaces_available if space.occupant_type == 'STAFF']
@@ -50,14 +48,12 @@ class Manager(object):
         walker = 0
         for space in self.spaces_available:
             if space.occupant_type == 'FELLOW':
-                for fellow in fellows:
+                for fellow in range(len(fellows)):
                     try:
-                        space.add_person(fellow[walker])
-                        walker = walker + 1
+                        space.add_person(fellows[walker])
                     except:
                         continue
-                    finally:
-                        return "All fellows have been allocated."
+                    walker = walker + 1
 
     def get_fellow_placement(self):
         return [space for space in self.spaces_available if space.occupant_type == 'FELLOW']
@@ -68,14 +64,12 @@ class Manager(object):
         walker = 0
         for space in self.spaces_available:
             if space.occupant_type == 'MALE':
-                for male in males:
+                for male in range(len(males)):
                     try:
-                        space.add_person(male[walker])
-                        walker = walker + 1
+                        space.add_person(males[walker])
                     except:
                         continue
-                    finally:
-                        return "All males have been allocated."
+                    walker = walker + 1
 
     def get_male_placement(self):
         return [space for space in self.spaces_available if space.occupant_type == 'MALE']
@@ -86,14 +80,12 @@ class Manager(object):
         walker = 0
         for space in self.spaces_available:
             if space.occupant_type == 'FEMALE':
-                for female in females:
+                for female in range(len(females)):
                     try:
-                        space.add_person(female[walker])
-                        walker = walker + 1
+                        space.add_person(females[walker])
                     except:
                         continue
-                    finally:
-                        return "All females have been allocated."
+                    walker = walker + 1
 
     def get_female_placement(self):
         return [space for space in self.spaces_available if space.occupant_type == 'FEMALE']
