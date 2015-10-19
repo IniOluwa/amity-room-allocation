@@ -2,6 +2,8 @@
 The Person class, and the Staff and Fellow classes
 which are both inheriting from the Person class.
 """
+
+
 class Person(object):
     """Class for a single person"""
     def __init__(self, firstname, lastname):
