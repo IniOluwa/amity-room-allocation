@@ -5,8 +5,9 @@ import unittest
 from person import Person, Staff, Fellow
 from inputting import PeopleFile
 from collection import PeopleCollection
-from amity import Office, Room
-from allocation import StaffOffices, FellowsOffices, MaleRooms, FemaleRooms
+from manager import Manager
+from spaces import OfficeSpace, LivingSpace
+
 
 class TestPersonInstantiation(unittest.TestCase):
     """Unittest for person, staff and fellow instantiation"""
@@ -49,84 +50,84 @@ class TestForPeopleInputAndUse(unittest.TestCase):
         self.assertIsInstance(self.people_file, self.people_collect)
 
 
-class TestFellowsAllocation(unittest.TestCase):
-    """Unittest for fellows allocation"""
-    def setUp(self):
-        self.fellows_offices = FellowsOffices()
-        self.office_number = self.fellows_offices.number_of_offices()
+# class TestFellowsAllocation(unittest.TestCase):
+#     """Unittest for fellows allocation"""
+#     def setUp(self):
+#         self.fellows_offices = FellowsOffices()
+#         self.office_number = self.fellows_offices.number_of_offices()
 
-    def test_for_fellows_offices(self):
-        self.assertEqual(self.office_number, 7)
-
-
-class TestStaffAllocation(unittest.TestCase):
-    """unittest for staff allocation"""
-    def setUp(self):
-        self.staff_offices = StaffOffices()
-        self.office_number = self.staff_offices.number_of_offices()
-
-    def test_for_staff_offices(self):
-        self.assertEqual(self.office_number, 3)
+#     def test_for_fellows_offices(self):
+#         self.assertEqual(self.office_number, 7)
 
 
-class TestMaleRoomAllocation(unittest.TestCase):
-    """Unittest for male rooms allocation"""
-    def setUp(self):
-        self.male_rooms = MaleRooms()
-        self.male_rooms_number = self.male_rooms.number_of_rooms()
+# class TestStaffAllocation(unittest.TestCase):
+#     """unittest for staff allocation"""
+#     def setUp(self):
+#         self.staff_offices = StaffOffices()
+#         self.office_number = self.staff_offices.number_of_offices()
 
-    def test_for_number_of_male_rooms(self):
-        self.assertEqual(self.male_rooms_number, 6)
-
-
-class TestFemaleRoomAllocation(unittest.TestCase):
-    """Unittest for male rooms allocation"""
-    def setUp(self):
-        self.female_rooms = FemaleRooms()
-        self.female_rooms_number = self.female_rooms.number_of_rooms()
-
-    def test_for_number_of_female_rooms(self):
-        self.assertEqual(self.female_rooms_number, 4)
+#     def test_for_staff_offices(self):
+#         self.assertEqual(self.office_number, 3)
 
 
-class TestOffices(unittest.TestCase):
-    """Unitest for offices"""
+# class TestMaleRoomAllocation(unittest.TestCase):
+#     """Unittest for male rooms allocation"""
+#     def setUp(self):
+#         self.male_rooms = MaleRooms()
+#         self.male_rooms_number = self.male_rooms.number_of_rooms()
 
-    def setUp(self):
-        self.office = Office
-        self.cedar = Office('Cedar')
-        self.person = Person('susan', 'adelokiki')
-
-    def test_that_offices_can_be_created(self):
-        self.assertIsInstance(self.cedar, self.office)
-        self.assertEqual(self.cedar.name, 'Cedar')
-        self.assertEqual(self.cedar.limit, 6)
-
-    def test_that_a_person_can_be_added_to_office(self):
-        self.assertEqual(len(self.cedar.people), 0)
-        self.cedar.add_person(self.person)
-        self.assertIn(self.person, self.cedar.people)
-        self.assertEqual(len(self.cedar.people), 1)
+#     def test_for_number_of_male_rooms(self):
+#         self.assertEqual(self.male_rooms_number, 6)
 
 
-class TestRooms(unittest.TestCase):
-    """Unitest for offices"""
+# class TestFemaleRoomAllocation(unittest.TestCase):
+#     """Unittest for male rooms allocation"""
+#     def setUp(self):
+#         self.female_rooms = FemaleRooms()
+#         self.female_rooms_number = self.female_rooms.number_of_rooms()
 
-    def setUp(self):
-        self.room = Room
-        self.crucible = Room('Crucible')
-        self.person = Person('stephen', 'sunday')
+#     def test_for_number_of_female_rooms(self):
+#         self.assertEqual(self.female_rooms_number, 4)
 
-    def test_that_offices_can_be_created(self):
-        self.assertIsInstance(self.crucible, self.room)
-        self.assertEqual(self.crucible.name, 'Crucible')
-        self.assertEqual(self.crucible.limit, 4)
 
-    def test_that_a_person_can_be_added_to_office(self):
-        self.assertEqual(len(self.crucible.people), 0)
-        self.crucible.add_person(self.person)
-        self.assertIn(self.person, self.crucible.people)
-        self.assertEqual(len(self.crucible.people), 1)
+# class TestOffices(unittest.TestCase):
+#     """Unitest for offices"""
+
+#     def setUp(self):
+#         self.office = Office
+#         self.cedar = Office('Cedar')
+#         self.person = Person('susan', 'adelokiki')
+
+#     def test_that_offices_can_be_created(self):
+#         self.assertIsInstance(self.cedar, self.office)
+#         self.assertEqual(self.cedar.name, 'Cedar')
+#         self.assertEqual(self.cedar.limit, 6)
+
+#     def test_that_a_person_can_be_added_to_office(self):
+#         self.assertEqual(len(self.cedar.people), 0)
+#         self.cedar.add_person(self.person)
+#         self.assertIn(self.person, self.cedar.people)
+#         self.assertEqual(len(self.cedar.people), 1)
+
+
+# class TestRooms(unittest.TestCase):
+#     """Unitest for offices"""
+
+#     def setUp(self):
+#         self.room = Room
+#         self.crucible = Room('Crucible')
+#         self.person = Person('stephen', 'sunday')
+
+#     def test_that_offices_can_be_created(self):
+#         self.assertIsInstance(self.crucible, self.room)
+#         self.assertEqual(self.crucible.name, 'Crucible')
+#         self.assertEqual(self.crucible.limit, 4)
+
+#     def test_that_a_person_can_be_added_to_office(self):
+#         self.assertEqual(len(self.crucible.people), 0)
+#         self.crucible.add_person(self.person)
+#         self.assertIn(self.person, self.crucible.people)
+#         self.assertEqual(len(self.crucible.people), 1)
 
 
 if __name__ == '__main__':

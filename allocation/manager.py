@@ -1,3 +1,4 @@
+
 from spaces import Space, OfficeSpace, LivingSpace
 from inputting import PeopleFile
 
