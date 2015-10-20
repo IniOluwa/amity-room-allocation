@@ -27,66 +27,29 @@ class Manager(object):
     def list_spaces(self):
         return self.spaces_available
 
-    def staff_allocation(self):
+    def allocate(self):
         people = PeopleFile().read_file()
         staffs = people.get_staff()
+        fellows = people.get_fellows()
+        males = people.get_male_residential_fellows()
+        females = people.get_female_residential_fellows()
+        unallocated = people.get_unallocated_fellows()
         walker = 0
         for space in self.spaces_available:
             if space.occupant_type == 'STAFF':
-                for staff in range(len(staffs)):
-                    try:
-                        space.add_person(staffs[walker])
-                    except:
-                        continue
-                    walker = walker + 1
+                people_list = staffs
+            elif space.occupant_type == 'FELLOW':
+                people_list = fellows
+            elif space.occupant_type == 'MALE':
+                people_list = males
+            elif space.occupant_type == 'FEMALE':
+                people_list = females
+            else:
+                people_list = unallocated
 
-    def get_staff_placement(self):
-        return [space for space in self.spaces_available if space.occupant_type == 'STAFF']
-
-    def fellow_allocation(self):
-        people = PeopleFile().read_file()
-        fellows = people.get_fellows()
-        walker = 0
-        for space in self.spaces_available:
-            if space.occupant_type == 'FELLOW':
-                for fellow in range(len(fellows)):
-                    try:
-                        space.add_person(fellows[walker])
-                    except:
-                        continue
-                    walker = walker + 1
-
-    def get_fellow_placement(self):
-        return [space for space in self.spaces_available if space.occupant_type == 'FELLOW']
-
-    def male_allocation(self):
-        people = PeopleFile().read_file()
-        males = people.get_male_residential_fellows()
-        walker = 0
-        for space in self.spaces_available:
-            if space.occupant_type == 'MALE':
-                for male in range(len(males)):
-                    try:
-                        space.add_person(males[walker])
-                    except:
-                        continue
-                    walker = walker + 1
-
-    def get_male_placement(self):
-        return [space for space in self.spaces_available if space.occupant_type == 'MALE']
-
-    def female_allocation(self):
-        people = PeopleFile().read_file()
-        females = people.get_female_residential_fellows()
-        walker = 0
-        for space in self.spaces_available:
-            if space.occupant_type == 'FEMALE':
-                for female in range(len(females)):
-                    try:
-                        space.add_person(females[walker])
-                    except:
-                        continue
-                    walker = walker + 1
-
-    def get_female_placement(self):
-        return [space for space in self.spaces_available if space.occupant_type == 'FEMALE']
+            for person in range(len(people_list)):
+                try:
+                    space.add_person(people_list[walker])
+                except:
+                    continue
+                walker = walker + 1
