@@ -8,7 +8,7 @@ Every office has a maximum of 6 people assigned to it.
 
 ## How to run program
 1. Navigate to the Checkpoint-1 directory
-2. Run ```python output.py```
+2. Run ```python get.py```
 
 ## How to run tests
 1. Install a virtual environment using ```pip install Virtualenv <environment-name>```
