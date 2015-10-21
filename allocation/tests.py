@@ -50,13 +50,42 @@ class TestForPeopleInputAndUse(unittest.TestCase):
         self.assertIsInstance(self.people_file, self.people_collect)
 
 
-class TestOffices(unittest.TestCase):
+class TestManager(unittest.TestCase):
+    """Unittest for manager"""
+
+    def setUp(self):
+        self.manager = Manager()
+        self.allocation = self.manager.allocation()
+        self.manager.space_placing()
+        self.manager.allocation()
+        self.spaces = self.manager.list_spaces()
+        self.office = OfficeSpace
+        self.room = LivingSpace
+        self.tongs = self.office('TONGS', 'OFFICE', 'STAFF')
+        self.iroko = self.room('IROKO', 'ROOM', 'FEMALE')
+
+    def test_that_office_spaces_can_be_created(self):
+        self.assertIsInstance(self.tongs, self.office)
+        self.assertEqual(self.tongs.space_type, 'OFFICE')
+        self.assertEqual(self.tongs.occupant_type, 'STAFF')
+
+    def test_that_living_spaces_can_be_created(self):
+        self.assertIsInstance(self.iroko, self.room)
+        self.assertEqual(self.iroko.space_type, 'ROOM')
+        self.assertEqual(self.iroko.occupant_type, 'FEMALE')
+
+    def test_that_spaces_are_available(self):
+        self.assertTrue(self.spaces)
+
+
+class TestOfficeSpaces(unittest.TestCase):
     """Unitest for offices"""
 
     def setUp(self):
         self.office = OfficeSpace
         self.cedar = OfficeSpace('Cedar', 'OFFICE', 'FELLOW')
         self.person = Person('susan', 'adelokiki')
+        self.people = self.cedar.list_people()
 
     def test_that_a_person_can_be_added_to_office(self):
         self.assertEqual(len(self.cedar.people), 0)
@@ -64,20 +93,27 @@ class TestOffices(unittest.TestCase):
         self.assertIn(self.person, self.cedar.people)
         self.assertEqual(len(self.cedar.people), 1)
 
+    def test_that_office_returns_person(self):
+        self.assertTrue(self.person, self.people)
 
-class TestRooms(unittest.TestCase):
+
+class TestLivingSpaces(unittest.TestCase):
     """Unitest for offices"""
 
     def setUp(self):
         self.room = LivingSpace
         self.crucible = LivingSpace('Crucible', 'ROOM', 'MALE')
         self.person = Person('stephen', 'sunday')
+        self.people = self.crucible.list_people()
 
     def test_that_a_person_can_be_added_to_office(self):
         self.assertEqual(len(self.crucible.people), 0)
         self.crucible.add_person(self.person)
         self.assertIn(self.person, self.crucible.people)
         self.assertEqual(len(self.crucible.people), 1)
+
+    def test_that_office_returns_person(self):
+        self.assertTrue(self.person, self.people)
 
 
 if __name__ == '__main__':
