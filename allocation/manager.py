@@ -1,5 +1,8 @@
-
-from spaces import Space, OfficeSpace, LivingSpace
+"""
+Manager class that creates instances of offices and room spaces,
+then allocates people to them. 
+"""
+from spaces import OfficeSpace, LivingSpace
 from inputting import PeopleFile
 
 
@@ -10,6 +13,7 @@ class Manager(object):
         self.occupant_type = None
 
     def space_placing(self):
+        """Automatic creation OfficeSpace and LivingSpace instances"""
         spaces = open('spaces.txt')
         for line in iter(spaces):
             line = line.split()
@@ -25,16 +29,18 @@ class Manager(object):
                 self.spaces_available.append(space)
 
     def list_spaces(self):
+        """List of spaces_available"""
         return self.spaces_available
 
-    def allocate(self):
+    def allocation(self):
+        """Sorting out of spaces occupants"""
         people = PeopleFile().read_file()
         staffs = people.get_staff()
         fellows = people.get_fellows()
         males = people.get_male_residential_fellows()
         females = people.get_female_residential_fellows()
-        unallocated = people.get_unallocated_fellows()
         walker = 0
+
         for space in self.spaces_available:
             if space.occupant_type == 'STAFF':
                 people_list = staffs
@@ -44,12 +50,17 @@ class Manager(object):
                 people_list = males
             elif space.occupant_type == 'FEMALE':
                 people_list = females
-            else:
-                people_list = unallocated
 
-            for person in range(len(people_list)):
+            """Placing of sorted occupants in their respective spaces"""
+            for person in people_list:
                 try:
                     space.add_person(people_list[walker])
                 except:
                     continue
                 walker = walker + 1
+
+    def unallocated_fellows(self):
+        """All unallocated fellows"""
+        people = PeopleFile().read_file()
+        unallocated = people.get_unallocated_fellows()
+        print unallocated
