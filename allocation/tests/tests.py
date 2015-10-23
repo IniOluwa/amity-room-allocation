@@ -2,11 +2,11 @@
 Unittests for Amity allocation
 """
 import unittest
-from ..models.person import Person, Staff, Fellow
-from ..models.fileparser import PeopleFile
-from ..models.collection import PeopleCollection
-from ..models.manager import Manager
-from ..models.spaces import OfficeSpace, LivingSpace
+from models.person import Person, Staff, Fellow
+from models.fileparser import FileParser
+from models.collection import PeopleCollection
+from models.manager import Manager
+from models.spaces import OfficeSpace, LivingSpace
 
 
 class TestPersonInstantiation(unittest.TestCase):
@@ -42,7 +42,7 @@ class TestPersonInstantiation(unittest.TestCase):
 class TestForPeopleInputAndUse(unittest.TestCase):
     """Unittest for people collection"""
     def setUp(self):
-        self.people = PeopleFile()
+        self.people = FileParser()
         self.people_file = self.people.read_file()
         self.people_collect = PeopleCollection
 
