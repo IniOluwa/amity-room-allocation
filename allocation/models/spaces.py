@@ -9,6 +9,10 @@ class Space:
     def add_person(self, person):
         if len(self.people) < self.limit:
             self.people.append(person)
+            if isinstance(self, OfficeSpace):
+                person.has_officespace = True
+            elif isinstance(self, LivingSpace):
+                person.has_livingspace = True
             self.limit-1
         else:
             raise Exception("We are out of spaces.")

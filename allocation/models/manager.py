@@ -9,6 +9,12 @@ from fileparser import FileParser
 class Manager(object):
     def __init__(self):
         self.spaces_available = []
+        self.people = FileParser().read_file()
+        self.staff = self.people.get_staff()
+        self.fellows = self.people.get_fellows()
+        self.males = self.people.get_male_residential_fellows()
+        self.females = self.people.get_female_residential_fellows()
+        self.unallocated = []
 
     def space_placing(self):
         """Automatic creation OfficeSpace and LivingSpace instances"""
@@ -29,44 +35,54 @@ class Manager(object):
         """List of spaces_available"""
         return self.spaces_available
 
+    def unallocated_fellows(self):
+        """List of unallocated fellows"""
+        return self.unallocated
+
     def allocation(self):
         """Sorting out of spaces occupants"""
-        people = FileParser().read_file()
-        staff = people.get_staff()
-        fellows = people.get_fellows()
-        males = people.get_male_residential_fellows()
-        females = people.get_female_residential_fellows()
 
         for space in self.spaces_available:
             try:
-                for person in staff:
-                    # allocate each person to an office
-                    if space.space_type == 'OFFICE':
-                        space.add_person(person)
-                        staff.remove(person)
+                if space.space_type == 'OFFICE':
+                    if len(self.staff) > 0:
+                        for person in self.staff:
+                            # allocate each person to an office
+                            space.add_person(person)
+                            self.staff.remove(person)
 
-                for person in fellows:
-                    # allocate each person to an office
-                    if space.space_type == 'OFFICE':
-                        space.add_person(person)
-                        fellows.remove(person)
+                    if len(self.fellows) > 0:
+                        for person in self.fellows:
+                            # allocate each person to an office
+                            space.add_person(person)
+                            self.fellows.remove(person)
 
-                for person in males:
-                    # allocate each person to a male living space
-                    if space.occupant_type == 'MALE':
+                if space.occupant_type == 'MALE':
+                    for person in self.males:
+                        # allocate each person to a male living space
                         space.add_person(person)
-                        males.remove(person)
+                        self.males.remove(person)
 
-                for person in females:
-                    # allocate each person to a female living space
-                    if space.occupant_type == 'FEMALE':
+                if space.occupant_type == 'FEMALE':
+                    for person in self.females:
+                        # allocate each person to a female living space
                         space.add_person(person)
-                        females.remove(person)
+                        self.females.remove(person)
+
+                if self.spaces_available < 1:
+                    unallocated = []
+                    for person in self.people:
+                        unallocated.append(person)
+                        print unallocated
             except:
                     continue
 
-    def unallocated_fellows(self):
-        """All unallocated fellows"""
-        people = FileParser().read_file()
-        unallocated = people.get_unallocated_fellows()
-        print unallocated
+        for person in self.people:
+            if person.role == 'STAFF':
+                if not person.has_officespace:
+                    self.unallocated.append(person)
+            elif person.role == 'FELLOW':
+                if not person.has_officespace:
+                    self.unallocated.append(person)
+                elif not person.has_livingspace:
+                    self.unallocated.append(person)

@@ -29,7 +29,7 @@ class Allocations(object):
     def get_unallocated_fellows(self):
         """Return unallocated fellows"""
         print "All unallocated fellows are as follows"
-        manager.unallocated_fellows()
+        print manager.unallocated
 
 allocation = Allocations()
 allocation.get_allocated_fellows()
