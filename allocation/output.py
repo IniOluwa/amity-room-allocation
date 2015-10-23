@@ -28,8 +28,12 @@ class Allocations(object):
 
     def get_unallocated_fellows(self):
         """Return unallocated fellows"""
-        print "All unallocated fellows are as follows"
-        print manager.unallocated
+        print "All unallocated staff are as follows:"
+        print manager.unallocated_staff
+        print "All fellows lacking office spaces are as follows:"
+        print manager.unallocated_fellows_to_officespaces
+        print "All fellows lacking living spaces are as follows:"
+        print manager.unallocated_fellows_to_livingspaces
 
 allocation = Allocations()
 allocation.get_allocated_fellows()

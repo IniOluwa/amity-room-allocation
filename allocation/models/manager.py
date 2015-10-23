@@ -14,7 +14,9 @@ class Manager(object):
         self.fellows = self.people.get_fellows()
         self.males = self.people.get_male_residential_fellows()
         self.females = self.people.get_female_residential_fellows()
-        self.unallocated = []
+        self.unallocated_staff = []
+        self.unallocated_fellows_to_officespaces = []
+        self.unallocated_fellows_to_livingspaces = []
 
     def space_placing(self):
         """Automatic creation OfficeSpace and LivingSpace instances"""
@@ -35,54 +37,39 @@ class Manager(object):
         """List of spaces_available"""
         return self.spaces_available
 
-    def unallocated_fellows(self):
-        """List of unallocated fellows"""
-        return self.unallocated
-
     def allocation(self):
         """Sorting out of spaces occupants"""
 
         for space in self.spaces_available:
             try:
-                if space.space_type == 'OFFICE':
-                    if len(self.staff) > 0:
-                        for person in self.staff:
-                            # allocate each person to an office
-                            space.add_person(person)
-                            self.staff.remove(person)
+                if space.occupant_type == 'STAFF':
+                    for person in self.staff:
+                        # allocate each person to an office
+                        space.add_person(person)
 
-                    if len(self.fellows) > 0:
-                        for person in self.fellows:
-                            # allocate each person to an office
-                            space.add_person(person)
-                            self.fellows.remove(person)
+                if space.occupant_type == 'FELLOW':
+                    for person in self.fellows:
+                        # allocate each person to an office
+                        space.add_person(person)
 
                 if space.occupant_type == 'MALE':
                     for person in self.males:
                         # allocate each person to a male living space
                         space.add_person(person)
-                        self.males.remove(person)
 
                 if space.occupant_type == 'FEMALE':
                     for person in self.females:
                         # allocate each person to a female living space
                         space.add_person(person)
-                        self.females.remove(person)
-
-                if self.spaces_available < 1:
-                    unallocated = []
-                    for person in self.people:
-                        unallocated.append(person)
-                        print unallocated
             except:
                     continue
 
         for person in self.people:
             if person.role == 'STAFF':
                 if not person.has_officespace:
-                    self.unallocated.append(person)
+                    self.unallocated_staff.append(person)
             elif person.role == 'FELLOW':
                 if not person.has_officespace:
-                    self.unallocated.append(person)
+                    self.unallocated_fellows_to_officespaces.append(person)
                 elif not person.has_livingspace:
-                    self.unallocated.append(person)
+                    self.unallocated_fellows_to_livingspaces.append(person)
