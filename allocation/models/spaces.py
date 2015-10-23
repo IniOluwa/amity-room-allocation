@@ -1,3 +1,9 @@
+"""
+The Space class from which the OfficeSpace, and LivingSpace classes inherits from
+This class is the core of all spaces created in the program.
+"""
+
+
 class Space:
     def __init__(self, name, space_type, occupant_type):
         self.name = name
@@ -25,6 +31,7 @@ class Space:
 
 
 class OfficeSpace(Space):
+    """OfficeSpace class which inherits from Space"""
     def __init__(self, name, space_type, occupant_type):
         Space.__init__(self, name, space_type, occupant_type)
         self.limit = 6
@@ -34,6 +41,7 @@ class OfficeSpace(Space):
 
 
 class LivingSpace(Space):
+    """LivingSpace class which inherits from Space"""
     def __init__(self, name, space_type, occupant_type):
         Space.__init__(self, name, space_type, occupant_type)
         self.limit = 4
