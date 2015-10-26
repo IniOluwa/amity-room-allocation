@@ -8,6 +8,9 @@ import os
 
 
 class Manager(object):
+    """
+    The manager object has methods for allocating people to spaces.
+    """
     def __init__(self):
         self.spaces_available = []
         self.people = FileParser().read_file()
@@ -20,7 +23,7 @@ class Manager(object):
         self.unallocated_fellows_to_livingspaces = []
 
     def space_placing(self):
-        """Automatic creation OfficeSpace and LivingSpace instances"""
+        """Create OfficeSpace and LivingSpace instances"""
         spaces = open(os.path.join('data', 'spaces.txt'))
         for line in iter(spaces):
             line = line.split()
@@ -34,6 +37,14 @@ class Manager(object):
                 space = LivingSpace(name, space_type, occupant_type)
                 self.spaces_available.append(space)
 
+    def generate_spaces(self):
+        """Generate spaces that are not filled"""
+        for space in self.spaces_available:
+            if not space.is_filled():
+                yield space
+            else:
+                yield space.next()
+
     def list_spaces(self):
         """List of spaces_available"""
         return self.spaces_available
@@ -41,7 +52,7 @@ class Manager(object):
     def allocation(self):
         """Sorting out of spaces occupants"""
 
-        for space in self.spaces_available:
+        for space in self.generate_spaces():
             try:
                 # allocate each staff to an office
                 if space.occupant_type == 'STAFF':

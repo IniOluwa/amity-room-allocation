@@ -5,6 +5,11 @@ This class is the core of all spaces created in the program.
 
 
 class Space:
+    """
+    The space class creates Space objects, every object instantiated from the Space class or Space child class
+    becomes an object of the space class having all it's properties and attributes.
+
+    """
     def __init__(self, name, space_type, occupant_type):
         self.name = name
         self.occupant_type = occupant_type
@@ -14,7 +19,7 @@ class Space:
 
     def add_person(self, person):
         """Adding people objects to space and asserting that person has a space"""
-        if len(self.people) < self.limit:
+        if not self.is_filled():
             self.people.append(person)
             if isinstance(self, OfficeSpace):
                 person.has_officespace = True
@@ -23,6 +28,11 @@ class Space:
             self.limit-1
         else:
             raise Exception("We are out of spaces.")
+
+    def is_filled(self):
+        if len(self.people) == self.limit:
+            return True
+        return False
 
     def list_people(self):
         """Returning people added to space"""

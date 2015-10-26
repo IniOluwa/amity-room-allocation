@@ -35,6 +35,8 @@ class Allocations(object):
         print "All fellows lacking living spaces are as follows:"
         print manager.unallocated_fellows_to_livingspaces
 
+
+"""Call allocation methods"""
 allocation = Allocations()
 allocation.get_allocated_fellows()
 allocation.get_unallocated_fellows()

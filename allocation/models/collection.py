@@ -10,21 +10,25 @@ class PeopleCollection(list):
     """People collection class for collecting instantiated people
     and sorting them into fellows and staff according to instantiation"""
     def get_staff(self):
+        """get all staff objects"""
         for person in self:
             if isinstance(person, Staff):
                 yield person
 
     def get_fellows(self):
+        """get all fellow objects"""
         for person in self:
             if isinstance(person, Fellow):
                 yield person
 
     def get_male_residential_fellows(self):
+        """get all male-residents objects"""
         for person in self:
             if isinstance(person, Fellow) and person.gender == 'M' and person.need == 'Y':
                 yield person
 
     def get_female_residential_fellows(self):
+        """get all female-residents objects"""
         for person in self:
             if isinstance(person, Fellow) and person.gender == 'F' and person.need == 'Y':
                 yield person
