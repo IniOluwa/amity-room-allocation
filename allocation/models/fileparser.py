@@ -5,14 +5,14 @@ then appends them to a list.
 """
 from person import Staff, Fellow
 from collection import PeopleCollection
-import abc
+import os
 
 
 class FileParser(object):
     """Class for getting and sorting people according to role"""
 
     @staticmethod
-    def read_file(filename='data\people.txt'):
+    def read_file(filename=os.path.join('data','people.txt')):
         people_collection = PeopleCollection()
         with open(filename) as people:
             for line in iter(people):

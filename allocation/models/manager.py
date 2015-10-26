@@ -4,6 +4,7 @@ then allocates people to them.
 """
 from spaces import OfficeSpace, LivingSpace
 from fileparser import FileParser
+import os
 
 
 class Manager(object):
@@ -20,7 +21,7 @@ class Manager(object):
 
     def space_placing(self):
         """Automatic creation OfficeSpace and LivingSpace instances"""
-        spaces = open('data\spaces.txt')
+        spaces = open(os.path.join('data', 'spaces.txt'))
         for line in iter(spaces):
             line = line.split()
             space_type = line[1]
