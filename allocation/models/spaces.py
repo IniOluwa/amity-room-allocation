@@ -18,7 +18,9 @@ class Space:
         self.people = []
 
     def add_person(self, person):
-        """Adding people objects to space and asserting that person has a space"""
+        """Adding people objects to space and asserting that person has a space,
+           Raise an execption if the space is filled.
+        """
         if not self.is_filled():
             self.people.append(person)
             if isinstance(self, OfficeSpace):
@@ -30,6 +32,7 @@ class Space:
             raise Exception("We are out of spaces.")
 
     def is_filled(self):
+        """Return unfilled spaces"""
         if len(self.people) == self.limit:
             return True
         return False

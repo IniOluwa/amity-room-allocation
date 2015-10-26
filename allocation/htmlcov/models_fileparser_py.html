@@ -116,14 +116,14 @@
 <p id="t5" class="pln"><span class="str">&quot;&quot;&quot;</span><span class="strut">&nbsp;</span></p>
 <p id="t6" class="stm run hide_run"><span class="key">from</span> <span class="nam">person</span> <span class="key">import</span> <span class="nam">Staff</span><span class="op">,</span> <span class="nam">Fellow</span><span class="strut">&nbsp;</span></p>
 <p id="t7" class="stm run hide_run"><span class="key">from</span> <span class="nam">collection</span> <span class="key">import</span> <span class="nam">PeopleCollection</span><span class="strut">&nbsp;</span></p>
-<p id="t8" class="stm run hide_run"><span class="key">import</span> <span class="nam">abc</span><span class="strut">&nbsp;</span></p>
+<p id="t8" class="stm run hide_run"><span class="key">import</span> <span class="nam">os</span><span class="strut">&nbsp;</span></p>
 <p id="t9" class="pln"><span class="strut">&nbsp;</span></p>
 <p id="t10" class="pln"><span class="strut">&nbsp;</span></p>
 <p id="t11" class="stm run hide_run"><span class="key">class</span> <span class="nam">FileParser</span><span class="op">(</span><span class="nam">object</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
 <p id="t12" class="pln">&nbsp; &nbsp; <span class="str">&quot;&quot;&quot;Class for getting and sorting people according to role&quot;&quot;&quot;</span><span class="strut">&nbsp;</span></p>
 <p id="t13" class="pln"><span class="strut">&nbsp;</span></p>
 <p id="t14" class="stm run hide_run">&nbsp; &nbsp; <span class="op">@</span><span class="nam">staticmethod</span><span class="strut">&nbsp;</span></p>
-<p id="t15" class="stm run hide_run">&nbsp; &nbsp; <span class="key">def</span> <span class="nam">read_file</span><span class="op">(</span><span class="nam">filename</span><span class="op">=</span><span class="str">&#39;data\people.txt&#39;</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t15" class="stm run hide_run">&nbsp; &nbsp; <span class="key">def</span> <span class="nam">read_file</span><span class="op">(</span><span class="nam">filename</span><span class="op">=</span><span class="nam">os</span><span class="op">.</span><span class="nam">path</span><span class="op">.</span><span class="nam">join</span><span class="op">(</span><span class="str">&#39;data&#39;</span><span class="op">,</span><span class="str">&#39;people.txt&#39;</span><span class="op">)</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
 <p id="t16" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">people_collection</span> <span class="op">=</span> <span class="nam">PeopleCollection</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t17" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">with</span> <span class="nam">open</span><span class="op">(</span><span class="nam">filename</span><span class="op">)</span> <span class="key">as</span> <span class="nam">people</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
 <p id="t18" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">for</span> <span class="nam">line</span> <span class="key">in</span> <span class="nam">iter</span><span class="op">(</span><span class="nam">people</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
@@ -158,7 +158,7 @@
     <div class="content">
         <p>
             <a class="nav" href="index.html">&#xab; index</a> &nbsp; &nbsp; <a class="nav" href="https://coverage.readthedocs.org">coverage.py v4.0</a>,
-            created at 2015-10-23 11:05
+            created at 2015-10-26 15:43
         </p>
     </div>
 </div>
