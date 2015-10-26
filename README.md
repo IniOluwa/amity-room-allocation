@@ -1,4 +1,4 @@
-# Checkpoint-1
+# Amity Room Allocation
 Design of an automatic allocation of people to their respective places.
 
 ##Allocation
@@ -11,7 +11,7 @@ Every person to be allocated is read from a txt file and a new instance , ```STA
 Every space is read from a txt file and a new space instance object is created based on the type of ```Space``` it is, ```OfficeSpace``` or ```LivingSpace```
 People are allocated to spaces based on the occupant_type of the space, ```STAFF``` or ```FELLOW```, ```MALE``` or ```FEMALE```
 
-*SAMPLE OUTPUT*
+[SAMPLE OUTPUT]
 
 **HACKSAW - OFFICE**
 
@@ -27,11 +27,11 @@ People are allocated to spaces based on the occupant_type of the space, ```STAFF
 
 
 ## How to run program
-1. Navigate to the Checkpoint-1 directory
+1. Navigate to the amity-room-allocation directory
 2. Run ```python output.py```
 
 ## How to run tests
-1. Navigate to the Checkpoint-1 directory
+1. Navigate to the amity-room-allocation directory
 2. Run ```python -m unittest tests.tests```
 
 ## How to run coverage tests and view coverage report

@@ -42,28 +42,29 @@ class Manager(object):
 
         for space in self.spaces_available:
             try:
+                # allocate each staff to an office
                 if space.occupant_type == 'STAFF':
                     for person in self.staff:
-                        # allocate each person to an office
                         space.add_person(person)
 
+                # allocate each fellow to an office
                 if space.occupant_type == 'FELLOW':
                     for person in self.fellows:
-                        # allocate each person to an office
                         space.add_person(person)
 
+                # allocate each male-fellow to a male living space
                 if space.occupant_type == 'MALE':
                     for person in self.males:
-                        # allocate each person to a male living space
                         space.add_person(person)
 
+                # allocate each female-fellow to a female living space
                 if space.occupant_type == 'FEMALE':
                     for person in self.females:
-                        # allocate each person to a female living space
                         space.add_person(person)
             except:
                     continue
 
+        """Return unallocated people after allocation"""
         for person in self.people:
             if person.role == 'STAFF':
                 if not person.has_officespace:
@@ -71,5 +72,5 @@ class Manager(object):
             elif person.role == 'FELLOW':
                 if not person.has_officespace:
                     self.unallocated_fellows_to_officespaces.append(person)
-                elif not person.has_livingspace:
+                if not person.has_livingspace:
                     self.unallocated_fellows_to_livingspaces.append(person)

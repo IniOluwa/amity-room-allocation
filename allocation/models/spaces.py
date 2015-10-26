@@ -13,6 +13,7 @@ class Space:
         self.people = []
 
     def add_person(self, person):
+        """Adding people objects to space and asserting that person has a space"""
         if len(self.people) < self.limit:
             self.people.append(person)
             if isinstance(self, OfficeSpace):
@@ -24,6 +25,7 @@ class Space:
             raise Exception("We are out of spaces.")
 
     def list_people(self):
+        """Returning people added to space"""
         return self.people
 
     def __repr__(self):
