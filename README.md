@@ -11,7 +11,7 @@ Every person to be allocated is read from a txt file and a new instance , ```STA
 Every space is read from a txt file and a new space instance object is created based on the type of ```Space``` it is, ```OfficeSpace``` or ```LivingSpace```
 People are allocated to spaces based on the occupant_type of the space, ```STAFF``` or ```FELLOW```, ```MALE``` or ```FEMALE```
 
-[SAMPLE OUTPUT]
+***SAMPLE OUTPUT***
 
 **HACKSAW - OFFICE**
 
