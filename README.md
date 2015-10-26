@@ -28,15 +28,18 @@ People are allocated to spaces based on the occupant_type of the space, ```STAFF
 
 ## How to run program
 1. Navigate to the amity-room-allocation directory
-2. Run ```python output.py```
+2. Run ```cd allocation```
+3. Run ```python output.py```
 
 ## How to run tests
 1. Navigate to the amity-room-allocation directory
-2. Run ```python -m unittest tests.tests```
+2. Run ```cd allocation```
+3. Run ```python -m unittest tests.tests```
 
 ## How to run coverage tests and view coverage report
 1. Install a virtual environment using ```pip install Virtualenv <environment-name>```
 2. Activate it and ```pip install coverage```
-3. Run ```coverage run -m tests.tests```
-2. Run ```coverage html``` to view html report.
+3. Run ```cd allocation```
+4. Run ```coverage run -m tests.tests```
+5. Run ```coverage html``` to view html report.
 
