@@ -1,5 +1,5 @@
 """
-The Space class from which the OfficeSpace, and LivingSpace classes inherits from
+The Space class from which is the parent class of the OfficeSpace and LivingSpace classes.
 This class is the core of all spaces created in the program.
 """
 

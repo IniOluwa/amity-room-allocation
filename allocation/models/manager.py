@@ -42,8 +42,6 @@ class Manager(object):
         for space in self.spaces_available:
             if not space.is_filled():
                 yield space
-            else:
-                yield space.next()
 
     def list_spaces(self):
         """List of spaces_available"""
@@ -54,13 +52,11 @@ class Manager(object):
 
         for space in self.generate_spaces():
             try:
-                # allocate each staff to an office
-                if space.occupant_type == 'STAFF':
+                # allocate each staff and fellow to an office
+                if space.space_type == 'OFFICE':
                     for person in self.staff:
                         space.add_person(person)
 
-                # allocate each fellow to an office
-                if space.occupant_type == 'FELLOW':
                     for person in self.fellows:
                         space.add_person(person)
 
